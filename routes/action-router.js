@@ -24,10 +24,20 @@ router.get('/', (req, res) => {
 
 
 
-
-
 //POST
+router.post('/', (req, res) => {
+    const actionInfo = req.body;
+    console.log('actionInfo');
 
+    actionDb
+    .insert(actionInfo)
+    .then(action => {
+        res.status(201).json(action);
+    })
+    .catch(err => {
+        res.status(500).json({ error: err, message: 'New project could not be created.'})
+    })
+})
 
 
 
