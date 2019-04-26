@@ -9,11 +9,27 @@ const router = express.Router();
 
 
 //REQUESTS FOR PROJECTS
-//GET
+//GET ALL ACTIONS
 router.get('/', (req, res) => {
 
     actionDb
     .get()
+    .then(actions => {
+        res.status(200).json(actions);
+    })
+    .catch(err => {
+        res.status(500).json({ error: err, message: 'Action information could not be found.'})
+    })
+})
+
+
+
+//GET FOR FINDING ACTIONS USING ID
+router.get('/:id', (req, res) => {
+    const id = req.params.id;
+
+    actionDb
+    .get(id)
     .then(actions => {
         res.status(200).json(actions);
     })
