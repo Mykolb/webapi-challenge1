@@ -10,6 +10,7 @@ const router = express.Router();
 //GET
 
 router.get('/', (req, res) => {
+
     projectDb
     .get()
     .then(projects => {
@@ -20,10 +21,10 @@ router.get('/', (req, res) => {
     })
 })
 
+//POST
 router.post('/', (req, res) => {
     const projectInfo = req.body;
     console.log('projectInfo');
-
 
     projectDb
     .insert(projectInfo)
@@ -34,6 +35,29 @@ router.post('/', (req, res) => {
         res.status(500).json({ error: err, message: 'New project could not be created.'})
     })
 })
+
+//UPDATE
+router.put('/:id',  (req, res) => {
+    const id = req.params.id;
+    const projectInfo = req.body;
+    console.log('id, profectInfo');
+
+    if(!id) {
+        res.status(404).json({ error: err, message: 'Null, id not found.'})
+    }
+
+    projectDb
+    .update(id, projectInfo)
+    .then(project => {
+        res.status(201).json(project);
+    })
+    .catch(error => {
+        res.status(500).json({ error: err, message: "The project information could not be modified."})
+    })
+})
+
+
+
 
 
 
