@@ -35,13 +35,30 @@ router.post('/', (req, res) => {
         res.status(201).json(action);
     })
     .catch(err => {
-        res.status(500).json({ error: err, message: 'New project could not be created.'})
+        res.status(500).json({ error: err, message: 'New action could not be created.'})
+    })
+})
+
+
+//UPDATE
+router.put('/:id',  (req, res) => {
+    const id = req.params.id;
+    const actionInfo = req.body;
+    console.log('id, actionInfo');
+
+    actionDb
+    .update(id, actionInfo)
+    .then(action => {
+        res.status(201).json(action);
+    })
+    .catch(error => {
+        res.status(500).json({ error: err, message: "The action information could not be modified."})
     })
 })
 
 
 
-//UPDATE
+
 
 
 
