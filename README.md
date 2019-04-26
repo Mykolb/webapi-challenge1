@@ -26,13 +26,23 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
 
 - [ ] Mention two parts of Express that you learned about this week.
 
+    I learned that Express is like React for backend and that it is JS that sits on top of NodeJS web server.
+
 - [ ] Describe Middleware?
+
+ MW is functions that extend software. You use MW to add features to Express and pretty much everything is MW.
 
 - [ ] Describe a Resource?
 
+    Resources are things that the application cares about.
+
 - [ ] What can the API return to help clients know if a request was successful?
 
+It can return a success message. 
+
 - [ ] How can we partition our application into sub-applications?
+
+    If you think, "this file has too many lines of code"...then you can break it into smaller bits. It makes it easier to maintain and reason about. 
 
 ## Project Setup
 
