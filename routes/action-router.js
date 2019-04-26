@@ -57,12 +57,27 @@ router.put('/:id',  (req, res) => {
 })
 
 
-
-
-
-
-
 //REMOVE 
+router.delete('/:id', (req, res) => {
+    const id = req.params.id;
+    console.log('id');
+
+    actionDb
+    .remove(id)
+    .then(deleted => {
+        res.status(200).end();
+    })
+    .catch(error => {
+        res.status(500).json({ error: err, message: 'The actions could not be removed.'})
+    })
+})
+
+
+
+
+
+
+
 
 
 

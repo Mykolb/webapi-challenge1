@@ -86,7 +86,7 @@ router.delete('/:id', (req, res) => {
         res.status(200).end();
     })
     .catch(error => {
-        res.status(500).json({ error: err, message: 'The project couls not be removed'})
+        res.status(500).json({ error: err, message: 'The project could not be removed'})
     })
 })
 
