@@ -21,6 +21,24 @@ router.get('/', (req, res) => {
     })
 })
 
+//GETPROJECT ACTIONS 
+router.get('/:id/actions', (req, res) => {
+    const projectId = req.params.id;
+    console.log('Get projects actions is working');
+
+    projectDb
+    .getProjectActions(projectId)
+    .then(projectActions => {
+        res.status(200).json(projectActions);
+    })
+    .catch(err => {
+        res.status(500).json({ error: err, message: 'Could not find the list of actions associated with this project.'})
+    })
+
+})
+
+
+
 //POST
 router.post('/', (req, res) => {
     const projectInfo = req.body;
@@ -42,9 +60,9 @@ router.put('/:id',  (req, res) => {
     const projectInfo = req.body;
     console.log('id, profectInfo');
 
-    if(!id) {
-        res.status(404).json({ error: err, message: 'Null, project id not found.'})
-    }
+    // if(!id) {
+    //     res.status(404).json({ error: err, message: 'Null, project id not found.'})
+    // }
 
     projectDb
     .update(id, projectInfo)
