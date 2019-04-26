@@ -43,7 +43,7 @@ router.put('/:id',  (req, res) => {
     console.log('id, profectInfo');
 
     if(!id) {
-        res.status(404).json({ error: err, message: 'Null, id not found.'})
+        res.status(404).json({ error: err, message: 'Null, project id not found.'})
     }
 
     projectDb
@@ -57,7 +57,20 @@ router.put('/:id',  (req, res) => {
 })
 
 
+//REMOVE
+router.delete('/:id', (req, res) => {
+    const id = req.params.id;
+    console.log('id');
 
+    projectDb
+    .remove(id)
+    .then(deleted => {
+        res.status(200).end();
+    })
+    .catch(error => {
+        res.status(500).json({ error: err, message: 'The project couls not be removed'})
+    })
+})
 
 
 
